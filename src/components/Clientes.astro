@@ -34,12 +34,12 @@ export const CUSTOMERS = [
 ];
 ---
 
-<section class="my-40">
+<section class="mb-40">
   <Typography
     as="h3"
-    variant="big"
+    variant="h3"
     color="textDarkMode"
-    class:list={"text-center"}
+    class:list={"text-center lg:mt-10"}
   >
     Nuestros Clientes
   </Typography>
@@ -51,7 +51,9 @@ export const CUSTOMERS = [
   >
     Respaldan su confianza en nuestros servicios profesionales
   </Typography>
-  <div class="mt-12 grid grid-cols-2 gap-8 md:grid-cols-3">
+  <div
+    class="my-10 flex flex-col md:mt-12 px-3 md:grid grid-cols-2 gap-8 md:grid-cols-3"
+  >
     {
       CUSTOMERS.map(({ id, name, url }) => (
         <a
