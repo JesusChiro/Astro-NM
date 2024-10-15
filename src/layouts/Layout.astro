@@ -1,51 +1,51 @@
 ---
-interface Props {
-	title: string;
-}
+import { ViewTransitions } from "astro:transitions";
+import KonamiCode from "@/components/Konamicode.astro";
+import Noise from "@/components/Noise.astro";
+import Footer from "@/sections/Footer.astro";
+import Hero from "@/sections/Hero.astro";
+import type { Preload } from "@/types/Preload"
+import "@fontsource-variable/jost";
 
+interface Props {
+  description: string;
+  title: string;
+}
 const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="Empresa dedicada al servicio 
+    de implementacion de redes e infraestructura para empresas"
+    />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/Favicon2.svg" />
+    <link rel="canonical" href="https://nmtelecom.pe" />
+    <ViewTransitions />
+    <title>{title}</title>
+  </head>
+  <body class="bg-fondolight dark:bg-primary animate-fade-in animate-delay-200">
+    <Noise />
+    <Hero />
+    <div class="">
+      <slot class="justify-center px-2 lg:px-10 pt-10 pb-10 mx-auto"/>
+      <KonamiCode />
+    </div>
+
+    <Footer />
+  </body>
 </html>
 <style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-		background-size: 224px;
-	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}
+  html {
+    font-family: "Jost Variable", system-ui, sans-serif;
+    /* background: #231f20; */
+    /* color-scheme: dark light; */
+    overflow-x: hidden;
+    overscroll-behavior: none;
+  }
 </style>

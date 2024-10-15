@@ -1,0 +1,74 @@
+---
+import Typography from "@/components/Typography.astro";
+export const CUSTOMERS = [
+  {
+    id: "poder-judicial-lima-norte",
+    name: "Poder Judicial Lima Norte",
+    url: "https://www.gob.pe/csjlimanorte",
+    alt: "Cliente de NM TELECOM - Poder Judicial Lima Norte ",
+  },
+  {
+    id: "instituto-nacional-del-corazon",
+    name: "Instituto Nacional del Corazon",
+    url: "http://campovirtualincor.essalud.gob.pe/campus_incor/",
+    alt: "Cliente de NM TELECOM - Instituto Nacional Cardiológico",
+  },
+  {
+    id: "weir-minerals-peru",
+    name: "Weir Mineral Perú - VULCO Perú",
+    url: "https://www.global.weir/es/",
+    alt: "Cliente de NM TELECOM - Weir Mineral Perú - VULCO Perú",
+  },
+  {
+    id: "essalud",
+    name: "Seguro Social de Salud",
+    url: "https://www.essalud.gob.pe/essalud-en-linea/",
+    alt: "Cliente de NM TELECOM - Seguro Social de Salud",
+  },
+  {
+    id: "universidad-nacional-de-piura",
+    name: "Universidad Nacional de Piura",
+    url: "https://www.unp.edu.pe/unp/",
+    alt: "Cliente de NM TELECOM - Universidad Nacional de Piura ",
+  },
+];
+---
+
+<section class="my-40">
+  <Typography
+    as="h3"
+    variant="big"
+    color="textDarkMode"
+    class:list={"text-center"}
+  >
+    Nuestros Clientes
+  </Typography>
+  <Typography
+    as="p"
+    variant="body"
+    color="textDarkMode"
+    class:list={"mt-4 text-center"}
+  >
+    Respaldan su confianza en nuestros servicios profesionales
+  </Typography>
+  <div class="mt-12 grid grid-cols-2 gap-8 md:grid-cols-3">
+    {
+      CUSTOMERS.map(({ id, name, url }) => (
+        <a
+          class="relative group flex h-24 py-5 items-center justify-center bg-gradient-to-b from-white/10 via-transparent to-transparent hover:from-white/2 md:h-32"
+          title={`Visita la página de ${name}`}
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            loading="lazy"
+            src={`/customers/${id}.svg`}
+            alt={`Logo del cliente ${name}`}
+            class="py-8 max-w-32 h-auto transition object-contain group-hover:scale-110 group-hover:opacity-70"
+          />
+        </a>
+      ))
+    }
+  </div>
+</section>

@@ -1,0 +1,59 @@
+<div></div>
+
+<style>
+  div {
+    position: fixed;
+    background-color: rgba(0, 86, 0, 0.091);
+    background-image: url("/noise.jpg");
+    background-repeat: repeat;
+    opacity: 0.02;
+    inset: -50%;
+    height: 200vh;
+    width: 200%;
+    pointer-events: none;
+    animation: noise 0.2s;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    div {
+      animation: none;
+      opacity: 0.3;
+    }
+  }
+
+  @keyframes noise {
+    0% {
+      transform: translate(0, 0);
+    }
+    10% {
+      transform: translate(-5%, -5%);
+    }
+    20% {
+      transform: translate(-10%, 5%);
+    }
+    30% {
+      transform: translate(5%, -10%);
+    }
+    40% {
+      transform: translate(-5%, -15%);
+    }
+    50% {
+      transform: translate(-10%, 5%);
+    }
+    60% {
+      transform: translate(15%, 0%);
+    }
+    70% {
+      transform: translate(-0%, -15%);
+    }
+    80% {
+      transform: translate(10%, 5%);
+    }
+    90% {
+      transform: translate(5%, 5%%);
+    }
+    100% {
+      transform: translate(0%, 0%);
+    }
+  }
+</style>

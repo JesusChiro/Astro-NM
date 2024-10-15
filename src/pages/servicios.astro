@@ -1,0 +1,207 @@
+---
+import Typography from "@/components/Typography.astro";
+import Layout from "@/layouts/Layout.astro";
+import { PROYECTS } from "@/utils/proyects";
+import { CUSTOMERS } from "@/utils/customers";
+import HorizontalScroll from "@/icons/horizontalScroll.astro";
+
+const listOfProyects = PROYECTS.map((proyect) => {
+  const { customer } = proyect;
+  const customerName = CUSTOMERS[customer]?.name || "";
+  return { ...proyect, customerName };
+});
+---
+
+<Layout
+  description="Web Oficial de NM Telecom SAC, Empresa dedicada al servicio de redes e infraestructura para empresas"
+  title="NM Telecom SAC - Redes e Infraestructura"
+>
+  <section class="mb-40 w-4/5 mx-auto">
+    <Typography
+      as="h2"
+      variant="boxer-title"
+      color="textDarkMode"
+      class:list={"text-center"}
+    >
+      Nuestros Proyectos
+    </Typography>
+    <Typography as="p" variant="body" color="neutral" class="mt- text-center"
+      >Conoce los detalles de nuestro proyecto</Typography
+    >
+    <div class="mt-20 flex flex-col items-center justify-center w-full">
+      <article class="flex w-full flex-col items-center justify-center">
+        <header
+          class="relative flex w-full flex-col items-center justify-center bg-center bg-no-repeat"
+        >
+          <img
+            transition:name="proyect-big-image"
+            class="proyect-photo h-[500px] w-[800px]"
+            alt="Fotografía de los proyectos"
+            src="/proyectos/Instalacion-gabinete-rittal.jpg"
+            style="filter: drop-shadow(0px 0px 50px rgba(0, 0, 0, 0.5));
+            mask-image: linear-gradient(to bottom, black 50%, transparent 75%) ;"
+          />
+
+          <div class="absolute bottom-14 max-w-md text wrap">
+            <Typography
+              as="h4"
+              variant="service-title"
+              color="textDarkMode"
+              class:list={"proyect-title bottom-0 mt-4 "}
+            >
+              Instalacion de Gabinete Rittal
+            </Typography>
+          </div>
+        </header>
+        <footer
+          class="md:absolute flex w-full justify-around gap-x-56 text-white text-center"
+        >
+          <div class="flex flex-col gap-0 md:gap-y-2">
+            <h4 class="text-2xl">Cliente</h4>
+            <h6 class="proyect-customer text-lg">Vulco Perú</h6>
+            <a
+              href="/proyectos/Instalacion-gabinete-rittal"
+              class="md:mt-10 inline-block font-semibold transition hover:scale-110 text-logonmt hover:text-logodark"
+              >Ver Proyecto</a
+            >
+          </div>
+          <div class="flex flex-col gap-0 md:gap-y-2">
+            <h4 class="text-2xl">Cliente</h4>
+            <h6 class="proyect-customer text-lg">Vulco Perú</h6>
+            <a
+              href="/proyectos/Instalacion-gabinete-rittal"
+              class="md:mt-10 inline-block font-semibold transition hover:scale-110 text-logonmt hover:text-logodark"
+              >Ver Proyecto</a
+            >
+          </div>
+        </footer>
+      </article>
+      <aside class="carousel-inner md:mt-4 grid grid-x-10 gap-y-4">
+        {
+          listOfProyects.map(({ id, title, customer, customerName }) => (
+            <a
+              class="w-4/5 proyect-link group relative flex h-20 items-center justify-center transition"
+              title={`Entra a la página del proyecto ${title}`}
+              href={`/proyectos/${id}`}
+              data-id={id}
+              data-title={title}
+              data-customers={customer}
+              data-customers-name={customerName}
+            >
+              {/* <img
+                loading="lazy"
+                src={`/proyectos/${id}.jpg`}
+                alt={`Fotografía de ${customer}`}
+                class="proyect-image w-30 -mt-10 h-auto px-4 transition group-hover:scale-110"
+              /> */}
+              <h6 class="proyect-title h-auto w-auto px-2 font-semibold text-sm justify-center text-center transition group-hover:scale-110 text-white hover:text-logonmt">
+                {title}
+              </h6>
+            </a>
+          ))
+        }
+      </aside>
+    </div>
+    <HorizontalScroll class:list={["w-16 text-primary opacity-80"]} />
+  </section>
+</Layout>
+
+<script>
+  const article = document.querySelector("article") as HTMLElement;
+  const proyectLink = document.querySelectorAll(".proyect-link");
+  const proyectTitle = document.querySelector(".proyect-title");
+  const proyectPhoto = document.querySelector(
+    ".proyect-photo"
+  ) as HTMLImageElement;
+  const proyectCustomer = document.querySelector(".proyect-customer");
+
+  proyectLink.forEach((link) => {
+    link.addEventListener("mouseenter", (event) => {
+      event.preventDefault;
+      const { id, title, customer, customerName } = (
+        event.currentTarget as HTMLElement
+      )?.dataset;
+
+      // proyectTitle.style.opacity = "0";
+      // proyectCustomer.style.opacity = "0";
+      proyectPhoto.style.opacity = "0";
+      setTimeout(
+        () => {
+          const proyectSRC = `/proyectos/${id}.jpg`;
+          const titleSRC = proyectTitle;
+          const customerSRC = proyectCustomer;
+
+          proyectPhoto.src = proyectSRC;
+          proyectTitle.innerText = titleSRC!;
+          proyectCustomer.innerText = customerSRC;
+
+          // proyectPhoto.alt = `Fotografía de ${title}`;
+          titleSRC.textContent = title;
+          customerSRC.textContent = customer;
+
+          // proyectTitle.style.opacity = "1";
+          // proyectCustomer.style.opacity = "1";
+          proyectPhoto.style.opacity = "1";
+        },
+        article.getAttribute("data-transition-duration") as unknown as number
+      );
+    });
+  });
+</script>
+<style>
+  .proyect-link {
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.1) 0%,
+      transparent 40%,
+      transparent 100%
+    );
+    transition: all 0.5s ease;
+  }
+  .proyect-link::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    display: block;
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.2) 0%,
+      transparent 40%,
+      transparent 100%
+    );
+    opacity: 0;
+    height: 50%;
+    transition:
+      opacity 0.2s ease-in-out,
+      height 0.2s ease-in-out;
+  }
+  .proyect-link:hover::before {
+    opacity: 0.8;
+    height: 90%;
+    box-shadow: 0 0px 3px rgba(50, 50, 50, 0.75);
+  }
+  .proyect-title {
+    object-fit: cover;
+    z-index: 2;
+    transition: transform 0.3s ease-in-out;
+
+    mask-image: linear-gradient(to bottom, black 90%, transparent 95%);
+  }
+  .proyect-link:hover .boxer-logo {
+    transform: scale(1.1);
+    opacity: 0.9;
+  }
+
+  aside {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+
+    a {
+      grid-column: span 2;
+      &:nth-child(11n + 7) {
+        grid-column-start: 2;
+        grid-column-end: 4;
+      }
+    }
+  }
+</style>

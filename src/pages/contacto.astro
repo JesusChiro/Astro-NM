@@ -1,0 +1,126 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { CONTACT_US } from "@/utils/consts";
+---
+
+<Layout title="NM Telecom SAC - Redes e Infraestructura">
+  <div
+    class="flex-col justify-center sm:flex-col lg:flex-row my-10 mx-auto flex"
+  >
+    <div class="w-full sm:px-1 lg:w-1/2 mx-auto">
+      <form
+        class="bg-white w-max px-2 mx-auto sm:w-10/12 sm:bg-white lg:shadow-md lg:w-3/4 rounded lg:px-8 pt-6 pb-8"
+      >
+        <h2
+          class="items-center text-center text-4xl font-extrabold dark:text-primary"
+        >
+          Contáctanos
+        </h2>
+        <p
+          class="sm:text-lg font-normal dark:text-primary mt-1 lg:text-xl"
+        >
+          Por favor, rellena el formulario
+        </p>
+        <fieldset class="py-2">
+          <label class="block dark:text-primary text-sm font-bold mb-2" for=""
+            >Nombres Completos:</label
+          >
+          <input
+            class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+            name="username"
+            type="text"
+            placeholder="Ej: Juan Perez"
+            required
+          />
+        </fieldset>
+        <fieldset class="py-2">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="email"
+            >Email:</label
+          >
+          <input
+            class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+            type="email"
+            placeholder="Enter email"
+            name="email"
+            id="email"
+            required
+          />
+        </fieldset>
+        <fieldset class="py-2">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for=""
+            >Mensaje:</label
+          >
+          <textarea
+            class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+            maxlength="500"
+            placeholder="Soy Juan Perez de la empresa... y deseo información sobre..."
+            name="message"
+            rows={3}
+            required></textarea>
+        </fieldset>
+        <button
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          type="submit">Send</button
+        >
+      </form>
+    </div>
+    <div class="mt-4 w-full lg:w-1/2 mx-auto">
+      <section
+        class="bg-white w-max lg:shadow-md lg:w-3/4 rounded px-8 pt-6 pb-8 flex place-content-center flex-col mx-auto"
+      >
+        <div class="text-center font-bold text-2xl">
+          <h2
+            class="items-center font-extrabold dark:text-primary text-2xl lg:text-4xl"
+          >
+            Contacto Directo
+          </h2>
+        </div>
+        {
+          CONTACT_US.map(
+            ({
+              Id,
+              Work,
+              AltWork,
+              IconWork,
+              Name,
+              LinkMail,
+              Email,
+              Phone,
+              LinkToWsp,
+            }) => (
+              <div class="flex place-content-center">
+                <ul
+                  role="list"
+                  class="divide-y divide-gray-200 dark:divide-gray-700 "
+                >
+                  <li class=" py-3 sm:py-4 ">
+                    <div class="flex items-center">
+                      <div class="flex">
+                        <img
+                          class="w-10 h-10 rounded "
+                          src={IconWork}
+                          alt={AltWork}
+                        />
+                      </div>
+                      <div class="px-0 mx-0 sm:flex-1 min-w-0 ms-4">
+                        <p class="text-xs text-left sm:text-sm font-medium text-gray-900 truncate dark:text-white">
+                          👨‍💻{Name}
+                        </p>
+                        <p class="text-xs text-left sm:text-sm font-medium text-gray-500 truncate dark:text-gray-400">
+                          <a href={LinkMail}>✉ {Email}</a>
+                        </p>
+                        <p class="text-xs text-left sm:text-sm font-medium text-gray-500 truncate dark:text-gray-400">
+                          {Work}
+                        </p>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            )
+          )
+        }
+      </section>
+    </div>
+  </div>
+</Layout>

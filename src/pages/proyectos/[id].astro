@@ -1,0 +1,57 @@
+---
+import BoxerBigImage from "@/components/BoxerBigImage.astro";
+import { PROYECTS } from "@/utils/proyects";
+import { CUSTOMERS } from "@/utils/customers";
+import Layout from "@/layouts/Layout.astro";
+import type { Preload } from "@/types/Preload";
+import Action from "@/components/Action.astro";
+
+export function getStaticPaths() {
+  return PROYECTS.map(({ id }) => ({
+    params: { id },
+  }));
+}
+
+const { id } = Astro.params;
+const [proyect] = PROYECTS.filter((boxer) => boxer.id === id);
+const customerName = CUSTOMERS[proyect.customer];
+const preloadBoxerImage: Preload[] = [
+  {
+    as: "image",
+    src: `/proyectos/${id}.jpg`,
+    type: "image/webp",
+    rel: "preload",
+  },
+];
+
+const flagAlt = customerName === undefined ? "un país" : customerName.name;
+
+export const prerender = true;
+---
+
+<Layout
+  description={`Información del ${proyect.title === "masculino" ? "luchador" : "luchadora"} ${proyect.title}`}
+  title={`${proyect.title} - NM Telecom SAC`}
+>
+  <main>
+    <section class="mx-auto items-center justify-center mb-10 mt-20">
+      <div class="items-center justify-center lg:mx-4">
+        <BoxerBigImage
+          id={id}
+          name={proyect.text}
+          country={proyect.customer}
+          customerName={flagAlt}
+          loading="eager"
+        />
+      </div>
+      <Action
+        class="mt-10 text-center border-logonmt text-white hover:bg-logonmt"
+        href="/servicios"
+        aria-label="volver a la página principal"
+        as="a"
+      >
+        Regresar
+      </Action>
+    </section>
+  </main>
+</Layout>

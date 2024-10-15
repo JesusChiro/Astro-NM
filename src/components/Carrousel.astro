@@ -1,0 +1,343 @@
+---
+import { SLIDERHEADER } from "@/utils/consts";
+---
+<div class="sm:px-5  lg:rounded px-8 pt-2 pb-8 mx-auto items-center">
+  <!-- slider 1 - objeto debajo de nav   -->
+  <div id="slider">
+    <!-- contenedor principal  -->
+    <div id="slides">
+      <!-- contenedor que agrupa todos los div una detras de otro -->
+      <div id="overflow">
+        <!--contenedor que agrupa el inner dentro del cuadro  -->
+        <div class="inner">
+          <!--contenedor que agrupa los slides en la platilla de slides -->
+          {
+            SLIDERHEADER.map(
+              ({ Title, Subtitle, Description, Img, AltSlider }) => (
+                <div class="slide">
+                  <div class="slide-content  mx-2 px-0">
+                    <div class="slide-text">
+                      <h1 class="text-4xl">{Title}</h1>
+                      <h2 class="slide-h2">{Subtitle}</h2>
+                      <p class="slide-p">{Description}</p>
+                      <a href="/nosotros">
+                        <button class="mt-10 block w-full rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                          Conócenos...!
+                        </button>
+                      </a>
+                    </div>
+                    <div class="slide-img">
+                      <img
+                        alt={AltSlider}
+                        class="img-slide-services"
+                        src={Img}
+                      />
+                    </div>
+                  </div>
+                </div>
+              )
+            )
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  /***/
+  /*carrusel de servicios - inicio*/
+  #slider {
+    margin-left: auto;
+    margin-right: auto;
+    width: 1000px;
+    height: 600px;
+  }
+
+  .slide {
+    height: 600px;
+  }
+
+  #slides {
+    width: 1000px;
+    height: 600px;
+  }
+
+  #overflow {
+    width: 100%;
+    overflow: hidden;
+    width: 1000px;
+    height: 600px;
+  }
+
+  .inner {
+    width: 1000px;
+    height: fit-content;
+  }
+
+  .slide-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 1300px;
+    padding-top: 0;
+    margin-top: 0;
+  }
+
+  .slide-text {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 50%;
+    padding-left: 4em;
+    padding-right: 25px;
+  }
+
+  .slide-h1 {
+    /* font-family: "Roboto"; */
+    font-size: 60px;
+    font-weight: 700;
+  }
+
+  .slide-h2 {
+    /* font-family: Georgia, "Times New Roman", Times, serif; */
+    font-size: 30px;
+    text-align: left;
+  }
+
+  .slide-p {
+    /* font-family: "Roboto"; */
+    font-size: 20px;
+    text-align: justify;
+  }
+
+  /*boton servicio en slider*/
+  .cta {
+    /* background-color: black; */
+    cursor: pointer;
+    border: none;
+    padding: 16px 32px;
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    position: relative;
+    border-radius: 12px;
+  }
+
+  .cta::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    filter: blur(8px);
+    animation: glowing 20s linear infinite;
+  }
+
+  cta:hover {
+    /* background-color: rgb(143, 176, 214); */
+    border-radius: 20%;
+    box-sizing: border-box;
+    background: linear-gradient(
+      45deg,
+      red,
+      blue,
+      deeppink,
+      blue,
+      red,
+      blue,
+      deeppink,
+      blue
+    );
+    /* background-color: #fff; */
+    /* color: #0b486b; */
+    border-radius: 1em;
+  }
+
+  @keyframes glowing {
+    0% {
+      background-position: 0 0;
+    }
+
+    50% {
+      background-position: 400% 0;
+    }
+
+    100% {
+      background-position: 0 0;
+    }
+  }
+
+  /*boton servicio en slider*/
+
+  .slide-img {
+    width: 50%;
+  }
+
+  .img-slide-services {
+    width: 400px;
+    filter: drop-shadow(30px 10px 4px rgba(66, 21, 21, 0.345));
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #slider {
+    margin: 0 auto;
+    width: 1000px;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  #slides {
+    padding: auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  #overflow {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  #slides .inner {
+    transition: margin-left 800ms cubic-bezier(0.77, 0, 0.175, 1);
+    width: 400%;
+    height: 600px;
+    animation: slide 30s infinite alternate ease-in-out;
+  }
+
+  #slides .slide {
+    width: 25%;
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: #fff;
+  }
+
+  @keyframes slide {
+    0% {
+      margin-left: 0;
+    }
+
+    20% {
+      margin-left: 0;
+    }
+
+    25% {
+      margin-left: -100%;
+    }
+
+    45% {
+      margin-left: -100%;
+    }
+
+    50% {
+      margin-left: -200%;
+    }
+
+    70% {
+      margin-left: -200%;
+    }
+
+    75% {
+      margin-left: -300%;
+    }
+
+    100% {
+      margin-left: -300%;
+    }
+  }
+
+  /*carrusel de servicios - final*/
+  /***/
+  @media screen and (min-width: 300px) and (max-width: 1024px) {
+    #slider {
+      top: 250px;
+      margin: auto;
+      width: 100%;
+      height: max-content;
+    }
+
+    #slides {
+      width: 100%;
+      height: auto;
+      padding: 0;
+      margin: 0;
+      z-index: 1;
+    }
+
+    #overflow {
+      width: 90%;
+      height: auto;
+      padding: 0;
+      margin: 0;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .inner {
+      width: 90%;
+    }
+
+    .slide {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .slide-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      padding: 0 2em;
+    }
+
+    .slide-text {
+      width: 100%;
+      margin-right: auto;
+      margin-left: auto;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .slide-h1 {
+      font-size: 3em;
+    }
+
+    .slide-h2 {
+      font-size: 2em;
+      text-align: left;
+    }
+
+    .slide-p {
+      font-size: 1.2em;
+      text-align: justify;
+    }
+
+    .slide-img {
+      width: 80%;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    .img-slide-services {
+      width: 80%;
+      margin-top: 4em;
+    }
+
+    #slides .inner {
+      width: 400%;
+      height: auto;
+    }
+
+    #slides .slide {
+      width: 25%;
+      height: 100%;
+    }
+  }
+</style>
