@@ -145,7 +145,7 @@ export const SLIDERHEADER = [
     },
     {
         Title: 'NM TELECOM',
-        Subtitle: 'Instalación de Sistema de Radio Enlaces',
+        Subtitle: 'Instalación  de Radio Enlaces',
         Description: `Mantén tus diferentes sedes interconectadas sin necesidad de cables con nuestros equipos de largo alcance
         inalambrico.`,
         AltSlider: 'Radio Enlaces - NM TELECOM',
@@ -154,7 +154,7 @@ export const SLIDERHEADER = [
 
     {
         Title: 'NM TELECOM',
-        Subtitle: 'Soluciones que Respladan tus Datos',
+        Subtitle: 'Switches y Routers',
         Description: `Ofrecemos las diferentes gamas para la comunicacion de sus
         equipos mediante Switches, Routers y Access Points.`,
         AltSlider: 'Switch Enlaces - NMT TELECOM',
