@@ -15,133 +15,103 @@ const normalizedPathName =
 
 const pages = [
   { name: "Inicio", href: "/" },
-  {
-    name: "Proyectos",
-    href: "/servicios",
-    // active: normalizedPathName.startsWith("/clientes"),
-  },
+  { name: "Proyectos", href: "/servicios" },
   { name: "Clientes", href: "/clientes" },
-  {
-    name: "Contacto",
-    href: "/contacto",
-  },
+  { name: "Contacto", href: "/contacto" },
 ].map((page) => ({
   ...page,
-  active: page.active ?? normalizedPathName === page.href,
 }));
-
-const isCombatIntern = normalizedPathName.startsWith("/combates/");
 ---
 
-<header class="mb-10 h-16 max-w-[100vw] lg:h-24">
+<header class="my-4 max-w-[100vw] lg:mt-10">
   <nav
-    class="group flex h-full w-full items-center justify-between px-10 lg:justify-center"
+    class="group flex w-full items-center justify-between px-10 lg:justify-center"
   >
     {
       pages.map(({ name, href, active, target }, key) => (
         <>
           <a
             href={href}
-            target={target}
-            rel={target === "_blank" ? "noopener noreferrer" : undefined}
+            target={target === "_blank" ? "noopener noreferrer" : undefined}
             class:list={[
-              "nav-item relative hidden h-full select-none flex-col items-center justify-center gap-1 text-center text-xl text-logodark dark:text-neutral-50  hover:text-logonmt uppercase lg:flex lg:px-7 xl:px-10",
+              "nav-item relative hidden my-0 h-[50px] select-none flex-col items-center justify-center gap-1 text-center text-xl text-logodark dark:text-neutral-50  hover:text-logonmt uppercase lg:flex lg:px-7 xl:px-10",
               { "current-page text-accent": active },
               { "text-white": !active },
             ]}
             id={`nav-link-${key}`}
           >
             <span class="z-10">{name}</span>
-            <div class="background absolute -z-10 h-full w-full" />
+            <div class="background absolute -z-10 h-w-full h-[50px] " />
           </a>
           {key === 1 && <div class:list={"hidden w-64 lg:block"} />}
         </>
       ))
     }
-    <a href="/" class="block lg:hidden"><NMT class:list={" bg-primary"} /></a>
-    <HamburgerButton class:list={"block w-96 lg:hidden"} id="menuButton" />
     <div
-      class="fixed inset-0 z-[888] flex w-screen flex-col items-center overflow-x-auto bg-logonmt px-10 lg:hidden"
-      id={MOBILE_MENU_CONTENT_ID}
+      class="flex gap-52 w-full items-center mx-auto justify-evenly lg:hidden"
     >
-      <aside class="flex min-h-16 w-full items-center justify-between">
-        <span class="text-xl font-semibold uppercase text-primary">Menú</span>
-        <HamburgerButton id="innerMenuButton" />
-      </aside>
-      <div class="flex min-h-2 w-full items-center">
-        <hr
-          class="h-[2px] w-full border-t-0"
-          style="background:linear-gradient(to right, transparent 0%, white 50%, transparent 100%)"
-        />
-      </div>
-      <nav class="navContent flex w-full flex-col items-center gap-5">
-        <img
-          src="/Favicon2.svg"
-          alt="lvda logo"
-          class="accent-drop-shadow my-4 max-w-60 drop-shadow-lg"
-          loading="lazy"
-        />
-        <hrx
-          class="h-[2px] w-full border-t-0"
-          style="background:linear-gradient(to right, transparent 0%, white 50%, transparent 100%)"
-        ></hrx>
-        {
-          pages.map(({ name, href, active }, key) => (
-            <>
-              <a
-                href={href}
-                class:list={[
-                  "relative flex flex-col items-center justify-center gap-2 text-xl capitalize ",
-                  { "current-page-mob": active },
-                ]}
-                id={`navmob-link-${key}`}
-              >
-                <span class="z-10 uppercase text-neutral-50 dark:text-neutral-50  hover:text-logodark lg:text-xl lg:font-semibold">
-                  {name}
-                </span>
-              </a>
-              <hr
-                class="h-[2px] w-full border-t-0"
-                style="background:linear-gradient(to right, transparent 0%, white 50%, transparent 100%)"
-              />
-            </>
-          ))
-        }
-        <!-- <div class="my-4 flex flex-col gap-10">
-          <!-- <FooterContent />
-          <SocialButtons class="flex items-center justify-center" /> -->
-      </nav> -->
-    </div>
-  </nav>
-</header>
-<div class="relative flex h-2 w-full flex-col items-center">
-  <div
-    class="gridBottomBarContainer absolute grid w-full items-center justify-between"
-  >
-    <div
-      class:list={[
-        "h-[2px] w-full rounded-l-[30%] border-t-0",
-        { gridBottomBarContainerLineLeft: !isCombatIntern },
-      ]}
-    >
-    </div>
-    <div class="focus-within-ring -ml-[8px] -mr-[4px]">
+      <HamburgerButton class:list={""} id="menuButton" />
+
       <a href="/" class="focus-visible:!ring-0">
-        <Nmlogo
-          class:list={"h-auto w-full"}
-          id="hero-logo-header"
-          animated={false}
-        />
+        <Nmlogo class="-m-4" id="hero-logo-header" animated={false} />
       </a>
     </div>
-    <div
-      class:list={[
-        "h-[2px] w-full rounded-l-[30%] border-t-0",
-        { gridBottomBarContainerLineRight: !isCombatIntern },
-      ]}
-    >
+  </nav>
+  <div
+    class="fixed inset-0 z-[888] flex w-screen flex-col items-center overflow-x-auto bg-logonmt px-10 dark:bg-logodark lg:hidden"
+    id={MOBILE_MENU_CONTENT_ID}
+  >
+    <aside class="flex min-h-16 w-full items-center justify-between">
+      <span class="text-xl font-semibold uppercase text-primary dark:text-white"
+        >Menú</span
+      >
+      <HamburgerButton id="innerMenuButton" />
+    </aside>
+    <div class="flex min-h-2 w-full items-center">
+      <hr
+        class="h-[2px] w-full border-t-0"
+        style="background:linear-gradient(to right, transparent 0%, white 50%, transparent 100%)"
+      />
     </div>
+    <!-- /* Menu en Responsive */ -->
+    <nav class="navContent flex w-full flex-col items-center gap-5">
+      <Nmlogo />
+      <!-- Division entre menu -->
+      <hrx
+        class="h-[2px] w-full border-t-0"
+        style="background:linear-gradient(to right, transparent 0%, white 50%, transparent 100%)"
+      ></hrx>
+      {
+        pages.map(({ name, href, active }, key) => (
+          <>
+            <a
+              href={href}
+              class:list={[
+                "relative flex flex-col items-center justify-center gap-2 text-xl capitalize ",
+                { "current-page-mob": active },
+              ]}
+              id={`navmob-link-${key}`}
+            >
+              <span class="z-10 uppercase text-neutral-50 dark:text-neutral-50  hover:text-logodark lg:text-xl lg:font-semibold">
+                {name}
+              </span>
+            </a>
+            <hr
+              class="h-[2px] w-full border-t-0"
+              style="background:linear-gradient(to right, transparent 0%, white 50%, transparent 100%)"
+            />
+          </>
+        ))
+      }
+    </nav>
   </div>
+</header>
+<!-- Barra divisoria de la pagina -->
+<div class="relative flex h-2 w-full flex-col items-center">
+  <hrx
+    class="h-[2px] w-full border-t-0"
+    style="background:linear-gradient(to right, transparent 0%, white 50%, transparent 100%)"
+  ></hrx>
 </div>
 
 <style>
@@ -158,7 +128,6 @@ const isCombatIntern = normalizedPathName.startsWith("/combates/");
     );
     transition: opacity 0.3s;
   }
-
   .nav-item:hover .background,
   .nav-item:focus .background {
     opacity: 1;
