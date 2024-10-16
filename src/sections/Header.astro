@@ -3,7 +3,6 @@ import NMT from "@/components/NMT.astro";
 import Nmlogo from "@/components/Nmlogo.astro";
 // import FooterContent from "@/components/FooterContent.astro";
 import HamburgerButton from "@/components/HamburgerButton.astro";
-import HeroLogo from "@/components/HeroLogo.astro";
 // import SocialButtons from "@/components/SocialButtons.astro";
 import { MOBILE_MENU_CONTENT_ID } from "@/consts/mobile-menu";
 
@@ -19,13 +18,12 @@ const pages = [
   {
     name: "Proyectos",
     href: "/servicios",
-    active: normalizedPathName.startsWith("/clientes"),
+    // active: normalizedPathName.startsWith("/clientes"),
   },
-  { name: "Clientes", href: "/pronosticos" },
+  { name: "Clientes", href: "/clientes" },
   {
     name: "Contacto",
     href: "/contacto",
-    target: "_blank",
   },
 ].map((page) => ({
   ...page,
@@ -47,7 +45,7 @@ const isCombatIntern = normalizedPathName.startsWith("/combates/");
             target={target}
             rel={target === "_blank" ? "noopener noreferrer" : undefined}
             class:list={[
-              "nav-item relative hidden h-full select-none flex-col items-center justify-center gap-1 text-center text-xl uppercase lg:flex lg:px-7 xl:px-10",
+              "nav-item relative hidden h-full select-none flex-col items-center justify-center gap-1 text-center text-xl text-logodark dark:text-neutral-50  hover:text-logonmt uppercase lg:flex lg:px-7 xl:px-10",
               { "current-page text-accent": active },
               { "text-white": !active },
             ]}
@@ -93,12 +91,14 @@ const isCombatIntern = normalizedPathName.startsWith("/combates/");
               <a
                 href={href}
                 class:list={[
-                  "relative flex flex-col items-center justify-center gap-2 text-xl capitalize",
+                  "relative flex flex-col items-center justify-center gap-2 text-xl capitalize ",
                   { "current-page-mob": active },
                 ]}
                 id={`navmob-link-${key}`}
               >
-                <span class="z-10 uppercase text-primary">{name}</span>
+                <span class="z-10 uppercase text-neutral-50 dark:text-neutral-50  hover:text-logodark lg:text-xl lg:font-semibold">
+                  {name}
+                </span>
               </a>
               <hr
                 class="h-[2px] w-full border-t-0"
@@ -107,43 +107,42 @@ const isCombatIntern = normalizedPathName.startsWith("/combates/");
             </>
           ))
         }
-        <nav class="my-4 flex flex-col gap-10">
+        <!-- <div class="my-4 flex flex-col gap-10">
           <!-- <FooterContent />
           <SocialButtons class="flex items-center justify-center" /> -->
-        </nav>
-      </nav>
+      </nav> -->
     </div>
   </nav>
-  <div class="relative flex h-2 w-full flex-col items-center">
+</header>
+<div class="relative flex h-2 w-full flex-col items-center">
+  <div
+    class="gridBottomBarContainer absolute grid w-full items-center justify-between"
+  >
     <div
-      class="gridBottomBarContainer absolute grid w-full items-center justify-between"
+      class:list={[
+        "h-[2px] w-full rounded-l-[30%] border-t-0",
+        { gridBottomBarContainerLineLeft: !isCombatIntern },
+      ]}
     >
-      <div
-        class:list={[
-          "h-[2px] w-full rounded-l-[30%] border-t-0",
-          { gridBottomBarContainerLineLeft: !isCombatIntern },
-        ]}
-      >
-      </div>
-      <div class="focus-within-ring -ml-[8px] -mr-[4px]">
-        <a href="/" class="focus-visible:!ring-0">
-          <Nmlogo
-            class:list={"h-auto w-full"}
-            id="hero-logo-header"
-            animated={false}
-          />
-        </a>
-      </div>
-      <div
-        class:list={[
-          "h-[2px] w-full rounded-l-[30%] border-t-0",
-          { gridBottomBarContainerLineRight: !isCombatIntern },
-        ]}
-      >
-      </div>
+    </div>
+    <div class="focus-within-ring -ml-[8px] -mr-[4px]">
+      <a href="/" class="focus-visible:!ring-0">
+        <Nmlogo
+          class:list={"h-auto w-full"}
+          id="hero-logo-header"
+          animated={false}
+        />
+      </a>
+    </div>
+    <div
+      class:list={[
+        "h-[2px] w-full rounded-l-[30%] border-t-0",
+        { gridBottomBarContainerLineRight: !isCombatIntern },
+      ]}
+    >
     </div>
   </div>
-</header>
+</div>
 
 <style>
   .nav-item .background {
