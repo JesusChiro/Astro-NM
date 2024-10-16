@@ -34,12 +34,13 @@ NM TELECOM SAC es una empresa dedicada al servicio de redes e infraestructura pa
 - **Detalles de la web**: Obtén información de la empresa.
 - **Formulario de contacto**: Permite a los usuarios solucionar sus dudas o enviar un mensaje.
 - **Redes sociales**: Conoce las redes oficiales de la empresa.
+<div align="center">
 
 ### Capturas de pantalla de la web de La Velada IV
 
-<div align="center">
 ![Captura de pantalla en ordenador](https://github.com/JesusChiro/Astro-NM/blob/main/public/Screenshoots/Macbook-Air-localhost.png)
 ![Captura de pantalla en móvil](https://github.com/JesusChiro/Astro-NM/blob/main/public/Screenshoots/iPhone-13-PRO-localhost.png)
+
 </div>
 <p align="right">(<a href="#readme-top">volver arriba</a>)</p>
 
