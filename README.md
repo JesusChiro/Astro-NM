@@ -9,6 +9,7 @@
 ## Web oficial de NM TELECOM SAC
 
 NM TELECOM SAC es una empresa dedicada al servicio de redes e infraestructura para empresas.
+
 <!-- [Diseño de Figma](https://www.figma.com/file/7uUHCJ7YhJEoB24EZ00lXC/240405-LVDA-IV?type=design&node-id=0-1&mode=design&t=CUK9cH8DXhKXx31U-0) · [Reportar error](https://github.com/midudev/la-velada-web-oficial/issues) · [Sugerir algo](https://github.com/midudev/la-velada-web-oficial/issues) -->
 
 </div>
@@ -36,8 +37,8 @@ NM TELECOM SAC es una empresa dedicada al servicio de redes e infraestructura pa
 
 ### Capturas de pantalla de la web de La Velada IV
 
-![Captura de pantalla en ordenador](https://github.com/midudev/la-velada-web-oficial/assets/1561955/b4080e89-d6e5-4fad-8303-b91e1142cf65)
-![Captura de pantalla en móvil](https://github.com/midudev/la-velada-web-oficial/assets/1561955/ded00bc0-6b82-4644-a079-5b33902f7eff)
+![Captura de pantalla en ordenador](https://github.com/JesusChiro/Astro-NM/blob/main/public/Screenshoots/Macbook-Air-localhost.png)
+![Captura de pantalla en móvil](https://github.com/JesusChiro/Astro-NM/blob/main/public/Screenshoots/iPhone-13-PRO-localhost.png)
 
 <p align="right">(<a href="#readme-top">volver arriba</a>)</p>
 
@@ -184,6 +185,7 @@ Si quieres contribuir de una manera mas sencilla, puedes iniciar este proyecto d
 [astro-badge]: https://img.shields.io/badge/Astro-fff?style=for-the-badge&logo=astro&logoColor=bd303a&color=352563
 [typescript-badge]: https://img.shields.io/badge/Typescript-007ACC?style=for-the-badge&logo=typescript&logoColor=white&color=blue
 [tailwind-badge]: https://img.shields.io/badge/Tailwind-ffffff?style=for-the-badge&logo=tailwindcss&logoColor=38bdf8
+
 <!-- [animations-badge]: https://img.shields.io/badge/@midudev/tailwind-animations-ff69b4?style=for-the-badge&logo=node.js&logoColor=white&color=blue
 [contributors-shield]: https://img.shields.io/github/contributors/midudev/la-velada-web-oficial.svg?style=for-the-badge
 [contributors-url]: https://github.com/midudev/la-velada-web-oficial/graphs/contributors
