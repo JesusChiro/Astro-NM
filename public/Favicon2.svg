@@ -39,7 +39,7 @@
 	<!-- Code para dark mode -->
 	<style>
 		path {
-			fill: #0a195f
+			fill: #fff
 		}
 
 		@media (prefers-color-scheme: dark) {

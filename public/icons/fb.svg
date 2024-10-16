@@ -2,7 +2,7 @@
     viewBox="0 0 50 50">
     <style>
         path {
-            fill: #0866FF
+            fill: #fff
         }
 
         @media (prefers-color-scheme: dark) {

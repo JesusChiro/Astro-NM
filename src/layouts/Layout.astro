@@ -9,6 +9,7 @@ import "@fontsource-variable/jost";
 import Header from "@/sections/Header.astro";
 import NMT from "@/components/NMT.astro";
 import Background from "@/components/NoiseBackgroundImage.astro";
+import Divider from "@/components/Divider.astro";
 
 interface Props {
   description: string;
@@ -32,7 +33,9 @@ const { title } = Astro.props;
     <ViewTransitions />
     <title>{title}</title>
   </head>
-  <body class="bg-fondolight dark:bg-primary animate-fade-in animate-delay-200">
+  <body
+    class="bg-fondolight dark:bg-fondodark animate-fade-in animate-delay-200"
+  >
     <Background />
     <div class="hidden lg:block lg:pt-14 mx-auto w-4/6"><NMT /></div>
     <Header />
@@ -40,7 +43,7 @@ const { title } = Astro.props;
       <slot class="justify-center px-2 lg:px-10 pt-10 pb-10 mx-auto" />
       <KonamiCode />
     </div>
-
+    <Divider />
     <Footer />
   </body>
 </html>

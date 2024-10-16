@@ -24,13 +24,13 @@ const { error, message, contextMessage } = Astro.props;
       as="h2"
       variant="h2"
       color="textDarkMode"
-      class:list={"text-white"}
+      class:list={"text-primary"}
     >
       <p>{message}</p>
     </Typography>
     <p class="mt-5 max-w-80 text-xl text-logonmt">{contextMessage}</p>
     <Action
-      class="mt-10 text-center border-logonmt text-white hover:bg-logonmt"
+      class="mt-10 text-center border-logonmt text-primary hover:bg-logonmt"
       href="/"
       aria-label="volver a la página principal"
       as="a"
