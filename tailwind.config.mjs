@@ -9,7 +9,7 @@ export default {
 				'secondary': '#fff',
 				'logonmt': '#4AC7F1',
 				'twitch': '#6441a4',
-				'logodark': '#0F1E62',
+				'logodark': '#0A195F',
 				'fondolight': '#0091E7',
 				
 			}
