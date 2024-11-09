@@ -1,9 +1,7 @@
 ---
 import BoxerBigImage from "@/components/BoxerBigImage.astro";
 import { PROYECTS } from "@/utils/proyects";
-import { CUSTOMERS } from "@/utils/customers";
 import Layout from "@/layouts/Layout.astro";
-import type { Preload } from "@/types/Preload";
 import Action from "@/components/Action.astro";
 
 export function getStaticPaths() {
@@ -14,38 +12,28 @@ export function getStaticPaths() {
 
 const { id } = Astro.params;
 const [proyect] = PROYECTS.filter((boxer) => boxer.id === id);
-const customerName = CUSTOMERS[proyect.customer];
-const preloadBoxerImage: Preload[] = [
-  {
-    as: "image",
-    src: `/proyectos/${id}.jpg`,
-    type: "image/webp",
-    rel: "preload",
-  },
-];
-
-const flagAlt = customerName === undefined ? "un país" : customerName.name;
-
 export const prerender = true;
 ---
 
 <Layout
-  description={`Información del ${proyect.title === "masculino" ? "luchador" : "luchadora"} ${proyect.title}`}
+  description={`Información del proyecto ${proyect.title}`}
   title={`${proyect.title} - NM Telecom SAC`}
 >
   <main>
-    <section class="mx-auto items-center justify-center mb-10 mt-20">
-      <div class="items-center justify-center lg:mx-4">
+    <section
+      class="gap-10 pt-10 px-5 items-center flex flex-col md:gap-16 justify-center pb-10"
+    >
+      <div class="md:items-center md:justify-center">
         <BoxerBigImage
           id={id}
-          name={proyect.text}
-          country={proyect.customer}
-          customerName={flagAlt}
+          title={proyect.title}
+          text={proyect.text}
+          customer={proyect.customer}
           loading="eager"
         />
       </div>
       <Action
-        class="mt-10 text-center border-logonmt text-white hover:bg-logonmt"
+        class="text-center border-logonmt bg-logoBlue text-fondoservices hover:bg-logoGreen hover:text-logoBlue"
         href="/servicios"
         aria-label="volver a la página principal"
         as="a"

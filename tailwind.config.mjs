@@ -13,6 +13,9 @@ export default {
 				'fondolight': '#0091E7',
 				'fondodark': '#252626',
 
+			},
+			blur: {
+				xs: '0.5px',
 			}
 		},
 	},

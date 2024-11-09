@@ -1,0 +1,61 @@
+---
+import { PROYECTS } from "@/utils/proyects";
+const listOfProyects = PROYECTS.map((proyect) => {
+  return { ...proyect };
+});
+import "photoswipe/style.css";
+---
+
+<div
+  class="grid grid-col-2 gap-4 md:grid-cols-3 md:max-w-6xl md:gap-8 mx-auto py-20"
+>
+  {
+    listOfProyects.map(({ id, title }) => (
+      <div class="transition-all group">
+        <a
+          href={`/proyectos/${id}.jpg`}
+          data-cropped="true"
+          data-pswp-width="1000"
+          data-pswp-height="625"
+          target="_blank"
+          class="group hover:scale-105 transition-all relative"
+        >
+          <img
+            transition:name="boxer-big-image"
+            src={`/proyectos/${id}.jpg`}
+            alt={title}
+            loading="lazy"
+            class="aspect-square object-cover"
+          />
+          <img
+            transition:name="boxer-big-image"
+            src={`/proyectos/${id}.jpg`}
+            alt={title}
+            loading="lazy"
+            class="blur-3xl absolute inset-0 transition rounded-xl group-hover:contrast-200 opacity-70 -z-10 aspect-square object-cover"
+          />
+        </a>
+        <div class="mt-4 flex flex-col items-center justify-center hover:transition-opacity duration-300 gap-2">
+          <span class="text-white font-medium text-xl">{title}</span>
+          <a
+            href={`/proyectos/${id}`}
+            class="text-white font-medium text-xl rounded-md border-2 px-4 py-2"
+          >
+            Ver Proyecto
+          </a>
+        </div>
+      </div>
+    ))
+  }
+
+  <script>
+    import PhotoSwipeLightbox from "photoswipe/lightbox";
+
+    const lightbox = new PhotoSwipeLightbox({
+      gallery: "#gallery",
+      children: "div",
+      pswpModule: () => import("photoswipe"),
+    });
+    lightbox.init();
+  </script>
+</div>

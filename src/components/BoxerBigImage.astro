@@ -3,13 +3,13 @@ import BoxerTitleName from "@/components/BoxerTitleName.astro";
 
 interface Props {
   readonly id: string;
-  readonly name: string;
-  readonly country: string;
-  readonly customerName?: string;
+  readonly title: string;
+  readonly text: string;
+  readonly customer?: string;
   readonly loading?: "lazy" | "eager";
 }
 
-const { name, country, customerName, id, loading } = Astro.props;
+const { text, title, customer, id, loading } = Astro.props;
 ---
 
 <aside class="w-9/12 h-3/4 items-center justify-center mx-auto bg-white mb-10">
@@ -22,24 +22,23 @@ const { name, country, customerName, id, loading } = Astro.props;
         <img
           decoding="async"
           class="h-auto w-full object-contain"
-          alt={`Fotografía de ${name}`}
+          alt={`Fotografía de ${title}`}
           src={`/proyectos/${id}.jpg`}
           style="filter: drop-shadow(0 0 5px rgba(0, 0, 0, .5));
 		  mask-image: linear-gradient(to bottom, black 80%, transparent 100%);"
           loading={loading}
         />
-      </picture>
     </div>
     <div
       class="bg-red-500 justify-center text-center my-auto p-8 rounded-md max-w-full"
     >
-      <h4 class="text-2xl " transition:name="boxer-name">
-        Cliente:<span class="font-bold">{customerName}</span>
+      <h4 class="text-2xl" transition:name="boxer-name">
+        Cliente:<span class="font-bold">{customer}</span>
       </h4>
     </div>
     <div class="col-start-2 bg-red-100">
       <div class="py-auto" transition:name="boxer-name">
-        <BoxerTitleName name={name} />
+        <BoxerTitleName name={text} />
       </div>
     </div>
   </div>
