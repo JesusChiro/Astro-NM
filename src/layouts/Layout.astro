@@ -1,10 +1,6 @@
 ---
 import { ViewTransitions } from "astro:transitions";
-import KonamiCode from "@/components/Konamicode.astro";
-
 import Footer from "@/sections/Footer.astro";
-import Hero from "@/sections/Hero.astro";
-import type { Preload } from "@/types/Preload";
 import "@fontsource-variable/jost";
 import Header from "@/sections/Header.astro";
 import NMT from "@/components/NMT.astro";
@@ -41,7 +37,6 @@ const { title } = Astro.props;
     <Header />
     <div class="">
       <slot class="justify-center px-2 lg:px-10 pt-10 pb-10 mx-auto" />
-      <KonamiCode />
     </div>
     <Divider />
     <Footer />

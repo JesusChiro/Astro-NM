@@ -28,12 +28,11 @@ const { text, title, customer, id, loading } = Astro.props;
     <div class="">
       <h4
         class="order-1 text-center text-white pb-2 border-b-2 lg:order-2 text-3xl lg:text-2xl"
-        transition:name="boxer-name"
       >
         Cliente: <span class="font-medium">{customer}</span>
       </h4>
     </div>
-    <div class="text-2xl p-4 lg:text-base" transition:name="boxer-name">
+    <div class="text-2xl p-4 lg:text-base">
       <BoxerTitleName name={text} />
     </div>
   </aside>
