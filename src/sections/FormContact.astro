@@ -1,0 +1,134 @@
+---
+const apiKey = import.meta.env.VITE_ACCESS_KEY_VALUE;
+const Subject = "Solicitud de Información";
+const fromContact = "Web Telecom";
+---
+
+<div class="mb-10 mx-8 lg:w-3/4 lg:mx-auto">
+  <form
+    class="p-8 w-full rounded pt-6 pb-8 text-primary"
+    id="form"
+    method="POST"
+  >
+    <!-- Replace with your Access Key -->
+    <input type="hidden" name="access_key" value={`${apiKey}`} />
+    <!-- Optional: Subject an be prefilled using type="hidden" or type="text" for normal user submitted input -->
+    <input type="hidden" name="subject" value={`${Subject}`} />
+    <!-- Optional: From Name you want to see in the email
+    Default is "Notifications". you can overwrite here -->
+    <input type="hidden" name="from_name" value={`${fromContact}`} />
+    <!-- Optional: But Recommended: To Prevent SPAM Submission.
+       Make sure its hidden by default -->
+    <input
+      type="checkbox"
+      name="botcheck"
+      class="hidden"
+      style="display: none;"
+    />
+    <!-- Optional: Custom Redirection or Thank you Page
+       Make sure you add full URL including https:// -->
+    <input
+      type="hidden"
+      name="redirect"
+      value="https://web3forms.com/success"
+    />
+
+    <p class="font-medium text-xl my-4">Por favor, rellena el formulario</p>
+    <fieldset class="my-2">
+      <label class="text-lg font-medium" for="">Nombres Completos:</label>
+      <input
+        class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 font-semibold text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+        name="username"
+        type="text"
+        placeholder="Ej: Juan Perez"
+        required
+      />
+    </fieldset>
+    <fieldset class="py-2">
+      <label class="text-lg font-medium" for="email">Email:</label>
+      <input
+        class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 font-semibold text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+        type="email"
+        placeholder="Ej: juan.perez@mail.com"
+        name="email"
+        id="email"
+        required
+      />
+    </fieldset>
+    <fieldset class="py-2">
+      <label class="text-lg font-medium" for="email">Celular:</label>
+      <input
+        class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 font-semibold text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+        type="number"
+        placeholder="999-999-999"
+        name="email"
+        id="email"
+        required
+      />
+      <fieldset class="py-2">
+        <label class="text-lg font-medium" for="">Mensaje:</label>
+        <textarea
+          class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 font-semibold text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+          maxlength="500"
+          placeholder="Soy Juan Perez de la empresa... y deseo información sobre..."
+          name="message"
+          rows={3}
+          required></textarea>
+      </fieldset>
+      <!-- Honeypot Spam Protection -->
+      <input
+        type="checkbox"
+        name="botcheck"
+        class="hidden"
+        style="display: none;"
+      />
+      <button
+        class="mx-auto bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        type="submit">Enviar Datos</button
+      >
+      <div id="result"></div>
+    </fieldset>
+  </form>
+  <script is:inline>
+    const form = document.getElementById("form");
+    const result = document.getElementById("result");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const object = Object.fromEntries(formData);
+      const json = JSON.stringify(object);
+      result.innerHTML = "Please wait...";
+
+      fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: json,
+      })
+        .then(async (response) => {
+          let json = await response.json();
+          if (response.status == 200) {
+            window.location.href = "https://web3forms.com/success";
+            result.innerHTML = "Form submitted successfully";
+            document.getElementById("form").reset();
+          } else {
+            console.log(response);
+            result.innerHTML = json.message;
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          result.innerHTML = "Something went wrong!";
+        })
+        .then(function () {
+          form.reset();
+          setTimeout(() => {
+            result.style.display = "none";
+          }, 3000);
+        });
+    });
+  </script>
+</div>

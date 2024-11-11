@@ -3,7 +3,7 @@ import BoxerBigImage from "@/components/BoxerBigImage.astro";
 import { PROYECTS } from "@/utils/proyects";
 import Layout from "@/layouts/Layout.astro";
 import Action from "@/components/Action.astro";
-
+import FormRequest from "@/sections/FormRequest.astro";
 export function getStaticPaths() {
   return PROYECTS.map(({ id }) => ({
     params: { id },
@@ -21,7 +21,7 @@ export const prerender = true;
 >
   <main>
     <section
-      class="gap-10 pt-10 px-5 items-center flex flex-col md:gap-16 justify-center pb-10"
+      class="gap-10 pt-10 px-5 items-center flex flex-col md:gap-1 justify-center pb-10"
     >
       <div class="md:items-center md:justify-center">
         <BoxerBigImage
@@ -32,6 +32,10 @@ export const prerender = true;
           loading="eager"
         />
       </div>
+      <div class="text-xl uppercase text-primary font-medium">
+        Solicita una cotizacion de este servicio
+      </div>
+      <FormRequest title={proyect.title} />
       <Action
         class="text-center border-logonmt bg-logoBlue text-white hover:bg-logoGreen"
         href="/servicios"
