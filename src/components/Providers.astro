@@ -1,6 +1,6 @@
 ---
 import Typography from "@/components/Typography.astro";
-import { CUSTOMERS } from "@/utils/customers";
+import { PROVIDERS } from "@/utils/providers";
 ---
 
 <section class="mb-40">
@@ -10,7 +10,7 @@ import { CUSTOMERS } from "@/utils/customers";
     color="textDarkMode"
     class:list={"text-center lg:mt-10"}
   >
-    Nuestros Clientes
+    Nuestros Proveedores
   </Typography>
   <Typography
     as="p"
@@ -24,18 +24,18 @@ import { CUSTOMERS } from "@/utils/customers";
     class="my-10 flex flex-col md:mt-12 px-3 md:grid grid-cols-2 gap-8 md:grid-cols-3"
   >
     {
-      CUSTOMERS.map(({ id, name, url }) => (
+      PROVIDERS.map(({ id, name }) => (
         <a
           class="relative group flex h-24 py-5 items-center justify-center bg-gradient-to-b from-white/10 via-transparent to-transparent hover:from-white/2 md:h-32"
           title={`Visita la página de ${name}`}
-          href={url}
+          href={id}
           target="_blank"
           rel="noopener noreferrer"
         >
           <img
             loading="lazy"
-            src={`/customers/${id}.svg`}
-            alt={`Logo del cliente ${name}`}
+            src={`/providers/${id}.webp`}
+            alt={`Logo del proveedor ${name}`}
             class="py-8 max-w-32 h-auto transition object-contain group-hover:scale-110 group-hover:opacity-70"
           />
         </a>
