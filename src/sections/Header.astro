@@ -19,15 +19,12 @@ const pages = [
     class="group flex w-full items-center justify-between px-10 lg:justify-center"
   >
     {
-      pages.map(({ name, href, active, target }, key) => (
+      pages.map(({ name, href }, key) => (
         <>
           <a
             href={href}
-            target={target === "_blank" ? "noopener noreferrer" : undefined}
             class:list={[
-              "nav-item relative hidden my-0 h-[50px] select-none flex-col items-center justify-center gap-1 text-center text-xl hover:bg-logonmt hover:text-primary uppercase lg:flex lg:px-7 xl:px-10",
-              { "current-page text-logonmt": active },
-              { "text-primary": !active },
+              "nav-item relative hidden my-0 h-[50px] select-none flex-col items-center justify-center gap-1 text-center text-xl hover:bg-logonmt hover:text-primary uppercase lg:flex lg:px-7 xl:px-10 current-page text-logonmt",
             ]}
             id={`nav-link-${key}`}
           >
@@ -68,13 +65,13 @@ const pages = [
       <!-- Division entre menu -->
       <Divider />
       {
-        pages.map(({ name, href, active }, key) => (
+        pages.map(({ name, href }, key) => (
           <>
             <a
               href={href}
               class:list={[
                 "relative flex flex-col items-center justify-center gap-2 text-xl capitalize ",
-                { "current-page-mob": active },
+                "current-page-mob",
               ]}
               id={`navmob-link-${key}`}
             >
