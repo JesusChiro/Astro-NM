@@ -1,29 +1,3 @@
-import { type Boxer } from "@/types/Gallery";
-
-const addGetters = (boxers: Boxer[]): Boxer[] => {
-  return boxers.map((b) => ({
-    ...b,
-    get age() {
-      return (
-        new Date(
-          new Date().getTime() - this.birthDate.getTime()
-        ).getFullYear() - 1970
-      );
-    },
-    // El enemigo de mi enemigo es mi amigo
-    get allies() {
-      return boxers
-        .filter(
-          (ally) =>
-            (Array.isArray(ally.versus)
-              ? ally.versus.every((opponent) => this.versus.includes(opponent))
-              : false) && ally.id !== this.id
-        )
-        .map((ally) => ally.id);
-    },
-  }));
-};
-
 export const PROYECTS = [
   {
     id: "bandejas-pasacables",
