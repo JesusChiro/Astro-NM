@@ -14,7 +14,6 @@ const { id } = Astro.params;
 const [proyect] = PROYECTS.filter((boxer) => boxer.id === id);
 export const prerender = true;
 ---
-
 <Layout
   description={`Información del proyecto ${proyect.title}`}
   title={`${proyect.title} - NM Telecom SAC`}
