@@ -6,21 +6,18 @@ interface Props {
   readonly title: string;
   readonly text: string;
   readonly customer?: string;
-  readonly loading?: "lazy" | "eager";
 }
 
-const { text, title, customer, id, loading } = Astro.props;
+const { text, title, customer, id} = Astro.props;
 ---
 
 <section class="flex flex-col lg:flex-row lg:w-10/12 mx-auto mb-10">
   <aside class="order-2 lg:order-1 p-4 lg:w-1/2 lg:p-8">
     <img
-      decoding="async"
       class="h-auto w-full object-cover aspect-video"
       alt={`Fotografía de ${title}`}
       src={`/proyectos/${id}.jpg`}
       style="mask-image: linear-gradient(to bottom, black 70%, transparent 90%);"
-      loading={loading}
     />
   </aside>
 
