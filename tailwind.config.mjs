@@ -12,7 +12,6 @@ export default {
 				'logodark': '#0A195F',
 				'fondolight': '#0091E7',
 				'fondodark': '#252626',
-
 			},
 			blur: {
 				xs: '0.5px',
