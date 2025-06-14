@@ -23,18 +23,17 @@ var currentYear = today.getFullYear();
       class="justify-center items-center h-1/3 w-full text-center md:flex-grow md:w-1/3 text-sm md:text-center lg:text-base lg:font-medium"
     >
       <p class="mt-2 sm:mt-1 md:w-full md:mx-auto">
-        Calle Enrique Cipriani 266, La Victoria
+        {NMT_INFO.ADDRESS}
       </p>
-      <p class="mt-2 sm:mt-0 md:w-full md:mx-auto">Cel: 954-193-884</p>
-      <p class="mt-2 sm:mt-0 md:w-full md:mx-auto">Cel: 995-863-645</p>
+      <p class="mt-2 sm:mt-0 md:w-full md:mx-auto">Cel: {NMT_INFO.TEL1}</p>
+      <p class="mt-2 sm:mt-0 md:w-full md:mx-auto">Cel: {NMT_INFO.TEL2}</p>
       <p class="mt-2 sm:mt-0 md:w-full md:mx-auto">
         E-mail:
         <a
           href="
         mailto:info@nmtelecom.pe?Subject='Solicito%20cotizacion%20del%20servicio%20de"
-          '
         >
-          info@nmtelecom.pe
+          {NMT_INFO.EMAIL}
         </a>
       </p>
     </div>
@@ -69,6 +68,6 @@ var currentYear = today.getFullYear();
   </div>
 
   <div class="text-center p-1 text-xs">
-    <span>©Copiright NM TELECOM {NMT_INFO.DATE_CREATED} - {currentYear}</span>
+    <span>©Copyright NM TELECOM {NMT_INFO.DATE_CREATED} - {currentYear}</span>
   </div>
 </footer>
