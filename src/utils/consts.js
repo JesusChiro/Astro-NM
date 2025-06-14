@@ -2,7 +2,11 @@ export const NMT_INFO = {
     NAME: 'NM TELECOM S.A.C',
     DATE_CREATED: 2013,
     LOGO: '/Favicon2.svg',
-    ALTLOGO: 'NM Telecom Logo'
+    ALTLOGO: 'NM Telecom Logo',
+    EMAIL: 'info@nmtelecom.pe',
+    ADDRESS: 'Calle Daniel Muñoz Nro. 275 Urb. Daniel Muñoz (Altura Javier Prado Este) Lima - Lima - San Borja',
+    TEL1: 954193884,
+    TEL2: 995863645,
 }
 
 export const ABOUTUS = [
