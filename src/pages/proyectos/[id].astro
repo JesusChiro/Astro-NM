@@ -3,7 +3,7 @@ import BoxerBigImage from "@/components/BoxerBigImage.astro";
 import { PROYECTS } from "@/utils/proyects";
 import Layout from "@/layouts/Layout.astro";
 import Action from "@/components/Action.astro";
-import FormRequest from "@/sections/FormRequest.astro";
+import RequestBudget from "@/components/RequestBudget.astro";
 export function getStaticPaths() {
   return PROYECTS.map(({ id }) => ({
     params: { id },
@@ -14,34 +14,38 @@ const { id } = Astro.params;
 const [proyect] = PROYECTS.filter((boxer) => boxer.id === id);
 export const prerender = true;
 ---
+
 <Layout
   description={`Información del proyecto ${proyect.title}`}
   title={`${proyect.title} - NM Telecom SAC`}
 >
-  <main>
-    <section
-      class="gap-10 pt-10 px-5 items-center flex flex-col md:gap-1 justify-center pb-10"
-    >
-      <div class="md:items-center md:justify-center">
-        <BoxerBigImage
-          id={id}
-          title={proyect.title}
-          text={proyect.text}
-          customer={proyect.customer}
-        />
-      </div>
-      <div class="text-xl uppercase text-primary font-medium">
-        Solicita una cotizacion de este servicio
-      </div>
-      <FormRequest title={proyect.title} />
+  <div
+    class="mx-auto gap-10 pt-10 px-5 items-center flex flex-col md:gap-1 justify-center pb-10"
+  >
+    <div class="md:items-center md:justify-center">
+      <BoxerBigImage
+        id={id}
+        title={proyect.title}
+        text={proyect.text}
+        customer={proyect.customer}
+      />
+    </div>
+  </div>
+  <div class="max-w-2xl mx-auto mb-10">
+    <p class="text-2xl uppercase text-center text-primary font-medium">
+      Solicita una cotizacion de este servicio
+    </p>
+
+    <RequestBudget />
+    <div class="flex justify-center mt-6">
       <Action
-        class="text-center border-logonmt bg-logoBlue text-white hover:bg-logoGreen"
+        class="text-center border-logonmt text-white w-8/12"
         href="/servicios"
         aria-label="volver a la página principal"
         as="a"
       >
         Regresar
       </Action>
-    </section>
-  </main>
+    </div>
+  </div>
 </Layout>
