@@ -1,0 +1,15 @@
+---
+import Form from "@/components/Form.astro";
+import ModalSuccessForm from "@/components/ModalSuccessForm.astro";
+---
+
+<div class="mb-10 lg:mx-auto">
+  <!-- Modal de éxito oculto inicialmente -->
+  <div
+    id="successModal"
+    class="fixed inset-0 bg-gray-800 bg-opacity-70 items-center flex justify-center z-50 hidden"
+  >
+    <ModalSuccessForm />
+  </div>
+  <Form />
+</div>

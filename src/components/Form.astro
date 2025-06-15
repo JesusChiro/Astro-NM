@@ -1,0 +1,117 @@
+---
+const inputBaseClass =
+  "bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 font-semibold text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500";
+const labelClass = "text-lg font-medium";
+const fieldsetClass = "py-2";
+
+const apiKey = "3cf32e4c-5626-46f9-b580-e95e00e2fc42";
+const Subject = "Solicitud de Cotización";
+const fromContact = "Web Telecom";
+---
+
+<form class="p-8 rounded pt-6 pb-8 text-primary" id="form" method="POST">
+  <input type="hidden" name="access_key" value={apiKey} />
+  <input type="hidden" name="from_name" value={fromContact} />
+  <input type="hidden" name="subject" value={Subject} />
+  <!-- <input type="hidden" name="ccemail" value={ccEmail} /> solo para plan de pago-->
+  <!-- Optional: But Recommended: To Prevent SPAM Submission.
+        Make sure its hidden by default -->
+  <input type="checkbox" name="botcheck" id="" style="display: none;" />
+
+  <p class="font-medium text-xl my-4">Por favor, rellena el formulario</p>
+  <fieldset class={fieldsetClass}>
+    <label class={labelClass} for="">Nombres Completos:</label>
+    <input
+      class={inputBaseClass}
+      name="name"
+      type="text"
+      placeholder="Ej: Juan Perez"
+      required
+    />
+  </fieldset>
+
+  <fieldset class={fieldsetClass}>
+    <label class={labelClass} for="email">Email:</label>
+    <input
+      class={inputBaseClass}
+      type="email"
+      placeholder="Ej: juan.perez@mail.com"
+      name="email"
+      required
+    />
+  </fieldset>
+
+  <fieldset class={fieldsetClass}>
+    <label class={labelClass} for="number">Celular:</label>
+    <input
+      class={inputBaseClass}
+      type="number"
+      placeholder="999-999-999"
+      name="number"
+      required
+    />
+  </fieldset>
+
+  <fieldset class={fieldsetClass}>
+    <label class={labelClass} for="message">Mensaje:</label>
+    <textarea
+      class={inputBaseClass}
+      maxlength="500"
+      placeholder="Soy Juan Perez de la empresa... y deseo una cotizacion de este servicio..."
+      name="message"
+      rows="3"
+      required></textarea>
+  </fieldset>
+  <div class="flex justify-center mt-6">
+    <button
+      class="mx-auto bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+      type="submit">Solicitar Cotización</button
+    >
+  </div>
+  <div id="result"></div>
+</form>
+
+<script is:inline>
+  const form = document.getElementById("form");
+  const result = document.getElementById("result");
+  const modal = document.getElementById("successModal");
+
+  form.addEventListener("submit", function (e) {
+    const formData = new FormData(form);
+    e.preventDefault();
+
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    result.innerHTML = "Please wait...";
+
+    fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: json,
+    })
+      .then(async (response) => {
+        let json = await response.json();
+        if (response.status == 200) {
+          result.innerHTML = "Form submitted successfully";
+          modal.classList.remove("hidden"); // <-- Mostrar modal
+          form.reset();
+        } else {
+          console.log(response);
+          result.innerHTML = json.message;
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        result.innerHTML = "Something went wrong!";
+      })
+      .then(function () {
+        setTimeout(() => {
+          result.style.display = "none";
+        }, 3000);
+      });
+  });
+</script>
